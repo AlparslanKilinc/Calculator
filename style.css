@@ -1,0 +1,31 @@
+@font-face {
+    font-family:"Lobster-Regular";
+    src: url(./Lobster/Lobster-Regular.ttf);
+ }
+ html,body{
+    margin: 0;
+    padding: 0;
+    background-color:  #daded4;
+    font-family: 'Lobster-Regular', Times, serif;
+ }
+ body{
+    min-height: 100vh;
+    display: flex;
+   flex-direction: column;
+ }
+
+
+
+
+
+
+ /* Github logo Animation */
+.fa-github {
+    color: rgb(10, 1, 7) ;
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
+  }
