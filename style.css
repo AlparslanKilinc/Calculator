@@ -1,18 +1,111 @@
 @font-face {
-    font-family:"Lobster-Regular";
-    src: url(./Lobster/Lobster-Regular.ttf);
+    font-family:"PT-Mono";
+    src: url(./PT-Mono/PTMono-Regular.ttf);
  }
  html,body{
     margin: 0;
     padding: 0;
     background-color:  #daded4;
-    font-family: 'Lobster-Regular', Times, serif;
+    font-family: 'PT-Mono', Times, serif;
+    
  }
  body{
     min-height: 100vh;
     display: flex;
    flex-direction: column;
  }
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+#container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color:gray;
+  width: 350px;
+  height: 550px;
+  border-radius: 20px;
+  border: 2px solid black;
+}
+/*  First Section */
+#display{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border: 2px solid black ;
+  width: 285px;
+  height: 75px;
+  background-color: white;
+  gap: 1em;
+  padding: 0.5em;
+}
+.calculation{
+  font-size: 16px;
+}
+.result{
+  font-size: 32px;
+}
+
+/*  Second  Section */
+.upper-calc{
+  display: flex;
+  justify-content: center;
+  margin-top: 0.3em;
+}
+.clear,.delete{
+  width: 149px;
+}
+
+/* Third  Section */
+#calculator{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5em;
+}
+.numbers{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: repeat(3,1fr);
+}
+.operators{
+  display: flex;
+  flex-direction: column;
+}
+
+ /* Footer */
+footer{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2em;
+}
+
+
+ /* Button & Effects */
+ button{
+  width: 70px;
+  height: 70px;
+  border: 2px solid black;
+  font-size: 16px;
+  font-family: 'PT-Mono', Times, serif;
+}
+.operators > button{
+  font-size: 32px;
+}
+
+
+
+  /*  Spacing between buttons & side part */
+.numbers,.operators,.upper-calc,#calculator{
+  gap: 0.5em;
+}
+
 
 
 
