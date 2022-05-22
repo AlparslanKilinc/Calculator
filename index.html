@@ -14,36 +14,36 @@
     <main>
        <div id="container">
             <div id="display">
-                <div class="calculation"></div>
-                <div class="result"></div>
+                <div id="Last-Operation" data-last-operation></div>
+                <div id="Current-Operation" data-current-operation></div>
             </div>
 
             <div class="upper-calc">
-                <button class="clear" onclick="clears()">CLEAR</button>
-                <button class="delete">DELETE</button>
+                <button id="clear" data-delete>CLEAR</button>
+                <button id="delete" data-clear>DELETE</button>
             </div>
        
             <div id="calculator">
                 <div class="numbers">
-                    <button class="nine" onclick="append('9')">9</button>
-                    <button class="eight"onclick="append('8')">8</button>
-                    <button class="seven"onclick="append('7')">7</button>
-                    <button class="six"onclick="append('6')">6</button>
-                    <button class="five"onclick="append('5')">5</button>
-                    <button class="four"onclick="append('4')">4</button>
-                    <button class="three"onclick="append('3')">3</button>
-                    <button class="two"onclick="append('2')">2</button>
-                    <button class="one"onclick="append('1')">1</button>
-                    <button class="zero"onclick="append('0')">0</button>
-                    <button class="dot"onclick="append('.')">.</button>
-                    <button class="equals"onclick="append('=')">=</button>
+                    <button class="btn" data-number >9</button>
+                    <button class="btn" data-number>8</button>
+                    <button class="btn" data-number>7</button>
+                    <button class="btn" data-number>6</button>
+                    <button class="btn" data-number>5</button>
+                    <button class="btn" data-number>4</button>
+                    <button class="btn" data-number>3</button>
+                    <button class="btn" data-number>2</button>
+                    <button class="btn" data-number>1</button>
+                    <button class="btn" data-number>0</button>
+                    <button id="dot"    data-number>.</button>
+                    <button id="equals" data-equals>=</button>
                 </div>
 
                 <div class="operators">
-                    <button class="add"onclick="append('+')">+</button>
-                    <button class="subtract"onclick="append('-')">-</button>
-                    <button class="multiply"onclick="append('x')">x</button>
-                    <button class="divide"onclick="append('/')">/</button>
+                    <button class="add"      data-operation>+</button>
+                    <button class="subtract" data-operation>-</button>
+                    <button class="multiply" data-operation>x</button>
+                    <button class="divide"   data-operation>/</button>
                 </div>
     
             </div>
@@ -51,7 +51,9 @@
     </main>
 
     <footer>
-        <p> &copy; 2022 AlparslanKilinc</p>
+        <p> &copy;   <script>
+            document.write(new Date().getFullYear())
+          </script> AlparslanKilinc</p>
         <a href="https://github.com/AlparslanKilinc" target="_blank"><i class="fa-brands fa-github"></i>
         </a>
     </footer>

@@ -44,10 +44,10 @@ main{
   gap: 1em;
   padding: 0.5em;
 }
-.calculation{
+#Last-Operation{
   font-size: 16px;
 }
-.result{
+#Current-Operation{
   font-size: 32px;
 }
 
@@ -57,7 +57,7 @@ main{
   justify-content: center;
   margin-top: 0.3em;
 }
-.clear,.delete{
+#clear,#delete{
   width: 149px;
 }
 
