@@ -7,6 +7,7 @@ let result='';
 
 
 
+
 /// Get Elements 
     const LastDisplay = document.getElementById('Last-Operation');
     const CurrentDisplay = document.getElementById('Current-Operation');
@@ -31,6 +32,7 @@ let result='';
                 clear();
             } 
         }
+        
         if(CurrentDisplay.textContent.includes('.')&& input === '.')return;
         CurrentDisplay.textContent += input;
         hold += input;
@@ -60,6 +62,7 @@ let result='';
 
 //// Functions 
     function calculate(){
+        if(LastDisplay.textContent==='') return;
        secondOperand = hold;
        if(firstOperand!=='' && secondOperand!=='')
        {
@@ -74,12 +77,20 @@ let result='';
     }
 
     function clear(){
-        CurrentDisplay.textContent = '';
-        LastDisplay.textContent = '';
-        hold='';
-        firstOperand='';
+        
+        if(CurrentDisplay.textContent.length===0 || CurrentDisplay.textContent.slice(0,-1)===`${result}`.slice(0,-1)){
+         CurrentDisplay.textContent = '';
+         LastDisplay.textContent = '';
+         hold='';
+         firstOperand='';
         secondOperand='';
         currentOperation=null;
+        
+            }else{
+            CurrentDisplay.textContent=CurrentDisplay.textContent.slice(0,-1);
+            hold= hold.slice(0,-1);
+         }
+       
     }
 
     
