@@ -127,7 +127,7 @@ button:focus {
 }
 
 .effect:hover,.effect:focus{
-  background-color: white;
+  background-color: rgb(19, 1, 1);
   color: #FF9500;
 }
 
