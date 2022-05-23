@@ -5,13 +5,14 @@ let currentOperation = null;
 let hold ='';
 let result='';
 
+
+
 /// Get Elements 
     const LastDisplay = document.getElementById('Last-Operation');
     const CurrentDisplay = document.getElementById('Current-Operation');
     const dotButton = document.getElementById('dot');
     const equalsButton = document.getElementById('equals');
     const clearButton = document.getElementById('clear');
-    const delButton = document.getElementById('delete');
     const numberButtons = document.querySelectorAll('[data-number]');
     const operatorButtons = document.querySelectorAll('[data-operation]');
     
@@ -19,25 +20,31 @@ let result='';
 /// Event Handling
      equalsButton.addEventListener('click', calculate);
      clearButton.addEventListener('click', clear);
-     delButton.addEventListener('click', deleteNumber);
+     operatorButtons.forEach((btn)=> btn.classList.add('effect'));
 
 /// Appending number to CurrentDisplay
     numberButtons.forEach( (num) => num.addEventListener('click', () => appendNumber(num.textContent)));
 
     function appendNumber(input){
+        if(result!==''){
+            if(CurrentDisplay.textContent+input===result+input){
+                clear();
+            } 
+        }
         if(CurrentDisplay.textContent.includes('.')&& input === '.')return;
         CurrentDisplay.textContent += input;
         hold += input;
+          
     }
-
+   ///// Operations 
     operatorButtons.forEach( (operator) => operator.addEventListener('click', () =>{
+        
+        if(LastDisplay.textContent.charAt(LastDisplay.length)===operator.textContent)return;
             if(currentOperation!==null ){
             calculate();
             currentOperation=operator.textContent;
             LastDisplay.textContent += operator.textContent;
-            
             }
-
             else 
             {
                 LastDisplay.textContent=CurrentDisplay.textContent;
@@ -45,9 +52,10 @@ let result='';
                 firstOperand = hold;
                 currentOperation = operator.textContent;
                 hold='';
+               
             }
-            
             CurrentDisplay.textContent='';
+           
     }));
 
 //// Functions 
@@ -61,12 +69,8 @@ let result='';
        LastDisplay.textContent = `${result}`;
        hold='';
        firstOperand=result; 
-    }
-    
-    function deleteNumber(){
-                CurrentDisplay.textContent = CurrentDisplay.textContent.slice(0,-1);
-                hold = hold.slice(0,-1);
-                
+       currentOperation='';
+     
     }
 
     function clear(){
@@ -76,9 +80,9 @@ let result='';
         firstOperand='';
         secondOperand='';
         currentOperation=null;
-
     }
 
+    
 // Basic Math 
 const add = (a,b) => parseFloat(a)+parseFloat(b);
 const subtract = (a,b) => parseFloat(a)-parseFloat(b);
