@@ -92,9 +92,11 @@ footer{
   width: 70px;
   height: 70px;
   border: 2px solid black;
-  font-size: 16px;
+  font-size: 24px;
   font-family: 'PT-Mono', Times, serif;
   cursor:pointer;
+  border-radius: 1000px;
+ 
 }
 .operators > button{
   font-size: 32px;

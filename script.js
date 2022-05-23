@@ -22,7 +22,6 @@ let result='';
      delButton.addEventListener('click', deleteNumber);
 
 /// Appending number to CurrentDisplay
-    ///eat ass
     numberButtons.forEach( (num) => num.addEventListener('click', () => appendNumber(num.textContent)));
 
     function appendNumber(input){
@@ -67,7 +66,7 @@ let result='';
     function deleteNumber(){
                 CurrentDisplay.textContent = CurrentDisplay.textContent.slice(0,-1);
                 hold = hold.slice(0,-1);
-                // if(CurrentDisplay.textContent==='')clear();
+                
     }
 
     function clear(){
