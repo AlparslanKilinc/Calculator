@@ -27,6 +27,7 @@ let result='';
     numberButtons.forEach( (num) => num.addEventListener('click', () => appendNumber(num.textContent)));
 
     function appendNumber(input){
+        if(CurrentDisplay.textContent)
         if(CurrentDisplay.textContent==='0'){
             clear();
             result='';
@@ -100,14 +101,11 @@ let result='';
        {
         result =operate(firstOperand,secondOperand,currentOperation);
        }
-       result=(Math.round(Number(result)*10)/10).toFixed(2);
-       CurrentDisplay.textContent = `${result}`;
+       result=Math.round(Number(result));
        CurrentDisplay.textContent = `${result}`;
        LastDisplay.textContent = `${result}`;
        hold='';
        firstOperand=result; 
-       
-
     }
 
     function clear(){
