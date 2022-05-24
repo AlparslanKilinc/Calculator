@@ -27,14 +27,20 @@ let result='';
     numberButtons.forEach( (num) => num.addEventListener('click', () => appendNumber(num.textContent)));
 
     function appendNumber(input){
+        if(CurrentDisplay.textContent==='0'){
+            clear();
+            result='';
+           
+        }
+        
       
-        if(result!=='' && result==='0'){
+        if(result!=='' ){
             if(CurrentDisplay.textContent+input===result+input || CurrentDisplay.textContent*-1+input===result*-1+input){
                 clear();
             } 
         }
-        
         if(CurrentDisplay.textContent.includes('.')&& input === '.')return;
+
         CurrentDisplay.textContent += input;
         hold += input;
           
@@ -42,6 +48,11 @@ let result='';
    ///// Operations 
   
     operatorButtons.forEach( (operator) => operator.addEventListener('click', () =>{
+        if(CurrentDisplay.textContent==='0'){
+            clear();
+            result='';
+            return;
+        }
 
          if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='-') return;
          if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='-')return;
@@ -89,7 +100,8 @@ let result='';
        {
         result =operate(firstOperand,secondOperand,currentOperation);
        }
-      
+       result=(Math.round(Number(result)*10)/10).toFixed(2);
+       CurrentDisplay.textContent = `${result}`;
        CurrentDisplay.textContent = `${result}`;
        LastDisplay.textContent = `${result}`;
        hold='';
