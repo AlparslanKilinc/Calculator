@@ -5,9 +5,6 @@ let currentOperation = null;
 let hold ='';
 let result='';
 
-
-
-
 /// Get Elements 
     const LastDisplay = document.getElementById('Last-Operation');
     const CurrentDisplay = document.getElementById('Current-Operation');
@@ -75,8 +72,8 @@ let result='';
        {
         result =operate(firstOperand,secondOperand,currentOperation);
        }
-       CurrentDisplay.textContent = `${result}`;
-       LastDisplay.textContent = `${result}`;
+       CurrentDisplay.textContent = `${Number(result)}`;
+       LastDisplay.textContent = `${Number(result)}`;
        hold='';
        firstOperand=result; 
        
@@ -133,7 +130,7 @@ const divide = (a,b) => {
     if(b===0){
         return null;
         
-    }else return parseFloat(a)/parseFloat(b);
+    }else return (parseFloat(a)/parseFloat(b)).toFixed(2);
     
 }
 const operate = (a,b,operator) =>{
