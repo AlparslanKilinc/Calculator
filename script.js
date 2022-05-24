@@ -28,7 +28,7 @@ let result='';
 
     function appendNumber(input){
       
-        if(result!==''){
+        if(result!=='' && result==='0'){
             if(CurrentDisplay.textContent+input===result+input || CurrentDisplay.textContent*-1+input===result*-1+input){
                 clear();
             } 
@@ -40,12 +40,7 @@ let result='';
           
     }
    ///// Operations 
-   let op =[];
-   let i=0;
-
-   operatorButtons.forEach( (operator) =>{
-        op[i++]=operator.textContent;
-   });
+  
     operatorButtons.forEach( (operator) => operator.addEventListener('click', () =>{
 
          if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='-') return;
@@ -55,13 +50,13 @@ let result='';
          if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='+')return;
 
          if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='x') return;
-         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='+')return;
+         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='x')return;
 
          if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='/') return;
-         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='+')return;
+         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='/')return;
 
          if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='%') return;
-         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='+')return;
+         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='%')return;
 
        
        
@@ -86,7 +81,8 @@ let result='';
 
 //// Functions 
     function calculate(){
-        if(LastDisplay.textContent==='') return;
+        if(LastDisplay.textContent===''&& LastDisplay.textContent!=='0') return;
+       
        secondOperand = hold;
        if(secondOperand==='')return;
        if(firstOperand!=='' && secondOperand!=='')
@@ -144,11 +140,11 @@ let result='';
     
 // Basic Math 
 const add = (a,b) => parseFloat(a)+parseFloat(b);
-const modulo = (a,b) => parseFloat(a)%parseFloat(b);
+const modulo = (a,b) => a%b;
 const subtract = (a,b) => parseFloat(a)-parseFloat(b);
 const multiply = (a,b) => parseFloat(a)*parseFloat(b);
 const divide = (a,b) => {
-    if(b===0){
+    if(b==='0'){
         return;
     }else return (parseFloat(a)/parseFloat(b));
     
