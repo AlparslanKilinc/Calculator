@@ -16,19 +16,23 @@ let result='';
     const clearButton = document.getElementById('clear');
     const numberButtons = document.querySelectorAll('[data-number]');
     const operatorButtons = document.querySelectorAll('[data-operation]');
+    const signButton = document.querySelector('#sign');
+ 
     
 
 /// Event Handling
      equalsButton.addEventListener('click', calculate);
      clearButton.addEventListener('click', clear);
+     signButton.addEventListener('click',addSign);
      operatorButtons.forEach((btn)=> btn.classList.add('effect'));
 
 /// Appending number to CurrentDisplay
     numberButtons.forEach( (num) => num.addEventListener('click', () => appendNumber(num.textContent)));
 
     function appendNumber(input){
+      
         if(result!==''){
-            if(CurrentDisplay.textContent+input===result+input){
+            if(CurrentDisplay.textContent+input===result+input || CurrentDisplay.textContent*-1+input===result*-1+input){
                 clear();
             } 
         }
@@ -40,9 +44,11 @@ let result='';
     }
    ///// Operations 
     operatorButtons.forEach( (operator) => operator.addEventListener('click', () =>{
+       
         
-        if(LastDisplay.textContent.charAt(LastDisplay.length)===operator.textContent)return;
-            if(currentOperation!==null ){
+        if(LastDisplay.textContent.charAt(LastDisplay.length)===operator.textContent && operate.textContent==='-')return;
+        if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='-')return;
+            if(currentOperation!==null){
             calculate();
             currentOperation=operator.textContent;
             LastDisplay.textContent += operator.textContent;
@@ -64,6 +70,7 @@ let result='';
     function calculate(){
         if(LastDisplay.textContent==='') return;
        secondOperand = hold;
+       if(secondOperand==='')return;
        if(firstOperand!=='' && secondOperand!=='')
        {
         result =operate(firstOperand,secondOperand,currentOperation);
@@ -72,12 +79,13 @@ let result='';
        LastDisplay.textContent = `${result}`;
        hold='';
        firstOperand=result; 
-       currentOperation='';
-     
+       
+
     }
 
     function clear(){
-        
+       
+
         if(CurrentDisplay.textContent.length===0 || CurrentDisplay.textContent.slice(0,-1)===`${result}`.slice(0,-1)){
          CurrentDisplay.textContent = '';
          LastDisplay.textContent = '';
@@ -93,14 +101,40 @@ let result='';
        
     }
 
+    function addSign(){
+        if(CurrentDisplay.textContent==='-')return;
+
+        if(CurrentDisplay.textContent==='' && hold===''){
+            CurrentDisplay.textContent='-';
+            hold = '-';
+        }
+         else if(`${result}`===CurrentDisplay.textContent){
+                CurrentDisplay.textContent=CurrentDisplay.textContent*'-1';
+                LastDisplay.textContent=CurrentDisplay.textContent;
+                firstOperand=CurrentDisplay.textContent;
+            }else{
+                CurrentDisplay.textContent=CurrentDisplay.textContent*'-1';
+                hold=CurrentDisplay.textContent;
+            }
+           
+           
+        }
+      
+        
+    
+
     
 // Basic Math 
 const add = (a,b) => parseFloat(a)+parseFloat(b);
+const modulo = (a,b) => parseFloat(a)%parseFloat(b);
 const subtract = (a,b) => parseFloat(a)-parseFloat(b);
 const multiply = (a,b) => parseFloat(a)*parseFloat(b);
 const divide = (a,b) => {
-    if(b===0) return null;
-    return parseFloat(a)/parseFloat(b);
+    if(b===0){
+        return null;
+        
+    }else return parseFloat(a)/parseFloat(b);
+    
 }
 const operate = (a,b,operator) =>{
     a=Number(a);
@@ -118,6 +152,9 @@ const operate = (a,b,operator) =>{
       
         case '/':
         return divide(a,b);
+
+        case '%':
+        return modulo(a,b);
     }
 };
 
