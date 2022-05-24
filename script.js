@@ -40,11 +40,32 @@ let result='';
           
     }
    ///// Operations 
+   let op =[];
+   let i=0;
+
+   operatorButtons.forEach( (operator) =>{
+        op[i++]=operator.textContent;
+   });
     operatorButtons.forEach( (operator) => operator.addEventListener('click', () =>{
+
+         if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='-') return;
+         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='-')return;
+
+         if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='+') return;
+         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='+')return;
+
+         if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='x') return;
+         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='+')return;
+
+         if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='/') return;
+         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='+')return;
+
+         if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='%') return;
+         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='+')return;
+
        
-        
-        if(LastDisplay.textContent.charAt(LastDisplay.length)===operator.textContent && operate.textContent==='-')return;
-        if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='-')return;
+       
+
             if(currentOperation!==null){
             calculate();
             currentOperation=operator.textContent;
@@ -72,8 +93,9 @@ let result='';
        {
         result =operate(firstOperand,secondOperand,currentOperation);
        }
-       CurrentDisplay.textContent = `${Number(result)}`;
-       LastDisplay.textContent = `${Number(result)}`;
+      
+       CurrentDisplay.textContent = `${result}`;
+       LastDisplay.textContent = `${result}`;
        hold='';
        firstOperand=result; 
        
@@ -81,16 +103,15 @@ let result='';
     }
 
     function clear(){
-       
 
-        if(CurrentDisplay.textContent.length===0 || CurrentDisplay.textContent.slice(0,-1)===`${result}`.slice(0,-1)){
+
+        if(CurrentDisplay.textContent.length===0 || CurrentDisplay.textContent.slice(0,-1)===`${result}`.slice(0,-1) ){
          CurrentDisplay.textContent = '';
          LastDisplay.textContent = '';
          hold='';
          firstOperand='';
         secondOperand='';
         currentOperation=null;
-        
             }else{
             CurrentDisplay.textContent=CurrentDisplay.textContent.slice(0,-1);
             hold= hold.slice(0,-1);
@@ -128,9 +149,8 @@ const subtract = (a,b) => parseFloat(a)-parseFloat(b);
 const multiply = (a,b) => parseFloat(a)*parseFloat(b);
 const divide = (a,b) => {
     if(b===0){
-        return null;
-        
-    }else return (parseFloat(a)/parseFloat(b)).toFixed(2);
+        return;
+    }else return (parseFloat(a)/parseFloat(b));
     
 }
 const operate = (a,b,operator) =>{
