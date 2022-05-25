@@ -54,25 +54,9 @@ let result='';
             result='';
             return;
         }
+        if(LastDisplay.textContent+CurrentDisplay.textContent===LastDisplay.textContent)return;
 
-         if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='-') return;
-         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='-')return;
-
-         if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='+') return;
-         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='+')return;
-
-         if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='x') return;
-         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='x')return;
-
-         if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='/') return;
-         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='/')return;
-
-         if(LastDisplay.textContent.includes(operator.textContent) && operate.textContent==='%') return;
-         if(LastDisplay.textContent.charAt(LastDisplay.textContent.length-1)==='%')return;
-
-       
-       
-
+    
             if(currentOperation!==null){
             calculate();
             currentOperation=operator.textContent;
@@ -101,7 +85,7 @@ let result='';
        {
         result =operate(firstOperand,secondOperand,currentOperation);
        }
-       result=Math.round(Number(result));
+       
        CurrentDisplay.textContent = `${result}`;
        LastDisplay.textContent = `${result}`;
        hold='';
