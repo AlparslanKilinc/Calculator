@@ -23,7 +23,7 @@
      operatorButtons.forEach((btn)=> btn.classList.add('effect'));
      window.addEventListener('keydown', handleKeyboardInput);
      numberButtons.forEach( (num) => num.addEventListener('click', () => appendNumber(num.textContent)));
-     operatorButtons.forEach( (operator) => operator.addEventListener('click',()=> appendOperator(operator.textContent),true));
+     operatorButtons.forEach( (operator) => operator.addEventListener('click',()=> appendOperator(operator.textContent)));
     
 
 //// Functions 
@@ -119,14 +119,16 @@
             }
         }
 
+       
+
     function handleKeyboardInput(e){
             if (e.key >= 0 && e.key <= 9) appendNumber(e.key);
             if (e.key === '.') appendNumber(e.key);
-            if (e.key === '=' || e.key === 'Enter') calculate();
+            if (e.key === '=' || e.key === 'Enter') equalsButton.click();
             if (e.key === 'Backspace') clear();
             if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') appendOperator(e.key);
         }
-      
+       
 // Basic Math 
     const add = (a,b) => parseFloat(a)+parseFloat(b);
     const modulo = (a,b) => a%b;
@@ -136,7 +138,6 @@
         if(b==='0'){
             return;
         }else return (parseFloat(a)/parseFloat(b));
-        
     }
 
     const operate = (a,b,operator) =>{
