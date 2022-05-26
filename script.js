@@ -14,25 +14,26 @@
     const operatorButtons = document.querySelectorAll('[data-operation]');
     const signButton = document.querySelector('#sign');
  
-    
-
 /// Event Handling
      equalsButton.addEventListener('click', calculate);
      clearButton.addEventListener('click', clear);
      signButton.addEventListener('click',addSign);
      operatorButtons.forEach((btn)=> btn.classList.add('effect'));
      window.addEventListener('keydown', handleKeyboardInput);
-     numberButtons.forEach( (num) => num.addEventListener('click', () => appendNumber(num.textContent)));
-     operatorButtons.forEach( (operator) => operator.addEventListener('click',()=> appendOperator(operator.textContent)));
+     
+     numberButtons.forEach( (num) => num.addEventListener('click', () =>{
+         appendNumber(num.textContent);
+         
+        }));
+     operatorButtons.forEach( (operator) => operator.addEventListener('click',()=>appendOperator(operator.textContent)));
     
-
 //// Functions 
+
     function appendNumber(input){
         if(CurrentDisplay.textContent)
         if(CurrentDisplay.textContent==='0'){
             clear();
             result='';
-        
         }
         if(result!=='' ){
             if(CurrentDisplay.textContent+input===result+input || CurrentDisplay.textContent*-1+input===result*-1+input){
@@ -57,8 +58,7 @@
             currentOperation=operator;
             LastDisplay.textContent += operator;
             }
-            else 
-            {
+            else{
                 LastDisplay.textContent=CurrentDisplay.textContent;
                 LastDisplay.textContent += operator;
                 firstOperand = hold;
@@ -72,11 +72,9 @@
       if(LastDisplay.textContent===''&& LastDisplay.textContent!=='0') return;
        secondOperand = hold;
        if(secondOperand==='')return;
-       if(firstOperand!=='' && secondOperand!=='')
-       {
+       if(firstOperand!=='' && secondOperand!==''){
         result =operate(firstOperand,secondOperand,currentOperation);
        }
-
        result = Math.round(Number(result)*1000)/1000;
        CurrentDisplay.textContent = `${result}`;
        LastDisplay.textContent = `${result}`;
@@ -93,10 +91,11 @@
          secondOperand='';
          currentOperation=null;
          result='';
-            }else{
+            }
+            else{
             CurrentDisplay.textContent=CurrentDisplay.textContent.slice(0,-1);
             hold= hold.slice(0,-1);
-         }
+            }
     }
 
     function addSign(){
@@ -113,19 +112,19 @@
                 LastDisplay.textContent=CurrentDisplay.textContent;
                 firstOperand=CurrentDisplay.textContent;
                 result=CurrentDisplay.textContent;
-                
-            }else{
+                }
+                else{
                 CurrentDisplay.textContent=CurrentDisplay.textContent*'-1';
                 hold=CurrentDisplay.textContent;
-            }
+                }
         }
 
        
 
     function handleKeyboardInput(e){
-            if (e.key >= 0 && e.key <= 9) appendNumber(e.key);
+            if (e.key >= 0 && e.key <= 9)appendNumber(e.key);
             if (e.key === '.') appendNumber(e.key);
-            if (e.key === '=' || e.key === 'Enter') equalsButton.click();
+            if (e.key === '=' || e.key === 'Enter') calculate();
             if (e.key === 'Backspace') clear();
             if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') appendOperator(e.key);
         }
