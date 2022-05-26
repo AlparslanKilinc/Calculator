@@ -76,7 +76,8 @@
        {
         result =operate(firstOperand,secondOperand,currentOperation);
        }
-       
+
+       result = Math.round(Number(result)*1000)/1000;
        CurrentDisplay.textContent = `${result}`;
        LastDisplay.textContent = `${result}`;
        hold='';
