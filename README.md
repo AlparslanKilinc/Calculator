@@ -1,4 +1,4 @@
-# Calculator
+# Web Apple Calculator
 
 ### Calculator That Mimics The Capabilities of Apple Mobile Calculator
 * Negative Calculations
