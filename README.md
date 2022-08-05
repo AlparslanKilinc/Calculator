@@ -8,4 +8,4 @@
 * Color change on hover
 * Display area updates by each input similar to apple calculator.
 
-Live Preview: https://alparslankilinc.github.io/Calculator/
+Live Preview: https://alparslankilinc.github.io/Web-Apple-Calculator/
