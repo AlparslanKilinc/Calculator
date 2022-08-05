@@ -1,6 +1,6 @@
 # Calculator
 
-### Calculator That Mimicks The Capabilities of Apple Mobile Calcualtor
+### Calculator That Mimics The Capabilities of Apple Mobile Calculator
 * Negative Calculations
 * Float Calculation with Decimals
 * Clear Button,Clearing One Input At A Time
