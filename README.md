@@ -1,3 +1,11 @@
 # Calculator
-Website that allows you to use  basics of a calculator.
+
+### Calculator That Mimicks The Capabilities of Apple Mobile Calcualtor
+* Negative Calculations
+* Float Calculation with Decimals
+* Clear Button,Clearing One Input At A Time
+* Clear All Apporite Times Similar To Apple Calculator Functionality.
+* Color Change On Hover
+* Display Area Updates By Each Input Similar To Apple Calculator.
+
 Live Preview: https://alparslankilinc.github.io/Calculator/
