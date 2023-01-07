@@ -1,6 +1,4 @@
-# Web Apple Calculator
-
-### Calculator That Mimics The Capabilities of Apple Mobile Calculator
+# Calculator
 * Negative Calculations
 * Float calculation with decimals
 * Clear button,clearing one input at a time.
@@ -8,4 +6,4 @@
 * Color change on hover
 * Display area updates by each input similar to apple calculator.
 
-Live Preview: https://alparslankilinc.github.io/Web-Apple-Calculator/
+Live Preview: https://alparslankilinc.github.io/Calculator/
